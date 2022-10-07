@@ -27,7 +27,7 @@ fi
 
 echo "gcc stage2: build"
 
-make BOOT_CFLAGS='-s -Os' -j$(nproc)
+make BOOT_CFLAGS='-Os' -j$(nproc)
 
 if [ ! "${?}" -eq 0 ]; then
     echo "Build failed. Abort."
