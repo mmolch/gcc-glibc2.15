@@ -16,8 +16,16 @@ case "${1}" in
 esac
 
 
+
 export SOURCE_DIR=$(cd "$(dirname "${0}")" && pwd)
 . "${SOURCE_DIR}/scripts/vars.sh"
+
+
+"${SOURCE_DIR}/scripts/debootstrap-ubuntu-1204.sh"
+if [ ! "${?}" -eq 0 ]; then
+    echo "Debootstrap failed."
+    exit 1
+fi
 
 
 "${SOURCE_DIR}/scripts/download.sh"
@@ -26,11 +34,6 @@ if [ ! "${?}" -eq 0 ]; then
     exit 1
 fi
 
-"${SOURCE_DIR}/scripts/debootstrap-ubuntu-1204.sh"
-if [ ! "${?}" -eq 0 ]; then
-    echo "Debootstrap failed."
-    exit 1
-fi
 
 #"${SOURCE_DIR}/scripts/run-in-bwrap.sh" "/gcc-glibc2.15/scripts/build-in-bwrap.sh"
 "${SOURCE_DIR}/scripts/run-in-chroot.sh" "/gcc-glibc2.15/scripts/build-in-bwrap.sh"
