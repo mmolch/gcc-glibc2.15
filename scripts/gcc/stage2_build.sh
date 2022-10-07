@@ -13,9 +13,9 @@ cd "${BUILD_DIR}"
 
 "${GCC_STAGE2_SOURCE_DIR}/configure" \
     --prefix="${GCC_STAGE2_INSTALL_DIR}" \
-    --build=${TARGET_MACHINE}-linux-gnu \
-    --host=${TARGET_MACHINE}-linux-gnu \
-    --target=${TARGET_MACHINE}-linux-gnu \
+    --build=$(gcc -dumpmachine) \
+    --host=$(gcc -dumpmachine) \
+    --target=$(gcc -dumpmachine) \
     --disable-multilib \
     --enable-checking=release \
     --enable-languages=c,c++
@@ -28,10 +28,16 @@ fi
 echo "gcc stage2: build"
 
 make BOOT_CFLAGS='-Os' -j$(nproc)
+#make -j$(nproc)
 
 if [ ! "${?}" -eq 0 ]; then
-    echo "Build failed. Abort."
-    exit 1
+    # possible virtual memory exhausted: Operation not permitted when building
+    # for i686. Trying again works (sometimes)
+    make BOOT_CFLAGS='-Os' -j1
+    if [ ! "${?}" -eq 0 ]; then
+        echo "Build failed. Abort."
+        exit 1
+    fi
 fi
 
 echo "gcc stage2: install"

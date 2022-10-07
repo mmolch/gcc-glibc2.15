@@ -7,7 +7,7 @@ export COLOR_DEFAULT='\033[0m'
 
 if [ -e "/gcc-glibc2.15" ]; then
     export SOURCE_DIR="/gcc-glibc2.15"
-    export TARGET_MACHINE=$(arch)
+    export TARGET_MACHINE=$(gcc -dumpmachine | cut -d '-' -f 1)
 else
     export SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE}")/.." && pwd)"
     export TARGET_DIR="${SOURCE_DIR}/${TARGET_MACHINE}"
@@ -19,6 +19,8 @@ export SCRIPT_DIR="${SOURCE_DIR}/scripts"
 export CACHE_DIR="${SOURCE_DIR}/cache"
 export CACHE_INSTALL_DIR="${CACHE_DIR}/${TARGET_MACHINE}"
 export BUILD_DIR="${CACHE_DIR}/${TARGET_MACHINE}/build"
+#export BUILD_DIR="/tmp/build"
+
 
 export CFLAGS="-Os"
 export CXXFLAGS="-Os"

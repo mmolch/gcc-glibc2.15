@@ -15,21 +15,11 @@ _unmount() {
     done
 }
 
-case "${TARGET_MACHINE}" in
-    i686)
-        ENV_ARCH=linux32
-        ;;
-
-    x86_64)
-        ENV_ARCH=linux64
-        ;;
-esac
-
 
 _mount
 sudo mount --bind "${SOURCE_DIR}" "${TARGET_ROOT_DIR}/gcc-glibc2.15"
 sudo mount --bind "${TARGET_DIR}${INSTALL_DIR}" "${TARGET_ROOT_DIR}${INSTALL_DIR}"
-sudo chroot --userspec=$(id -u):$(id -g) "${TARGET_ROOT_DIR}" ${ENV_ARCH} "${@}"
+sudo chroot "${TARGET_ROOT_DIR}" "${@}"
 sudo umount "${TARGET_ROOT_DIR}${INSTALL_DIR}"
 sudo umount "${TARGET_ROOT_DIR}/gcc-glibc2.15"
 _unmount

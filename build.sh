@@ -38,5 +38,5 @@ if [ ! "${?}" -eq 0 ]; then
 fi
 
 
-#"${SOURCE_DIR}/scripts/run-in-bwrap.sh" "/gcc-glibc2.15/scripts/build-in-bwrap.sh"
-"${SOURCE_DIR}/scripts/run-in-chroot.sh" "/gcc-glibc2.15/scripts/build-in-bwrap.sh"
+#"${SOURCE_DIR}/scripts/run-in-bwrap.sh" "/gcc-glibc2.15/scripts/build.sh"
+"${SOURCE_DIR}/scripts/run-in-chroot.sh" "/gcc-glibc2.15/scripts/build.sh"

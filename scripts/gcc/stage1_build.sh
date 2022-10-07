@@ -13,9 +13,9 @@ cd "${BUILD_DIR}"
 
 "${GCC_STAGE1_SOURCE_DIR}/configure" \
     --prefix="${GCC_STAGE1_INSTALL_DIR}" \
-    --build=${TARGET_MACHINE}-linux-gnu \
-    --host=${TARGET_MACHINE}-linux-gnu \
-    --target=${TARGET_MACHINE}-linux-gnu \
+    --build=$(gcc -dumpmachine) \
+    --host=$(gcc -dumpmachine) \
+    --target=$(gcc -dumpmachine) \
     --disable-multilib \
     --enable-checking=release \
     --enable-languages=c,c++
