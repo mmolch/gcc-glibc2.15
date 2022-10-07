@@ -20,6 +20,9 @@ esac
 export SOURCE_DIR=$(cd "$(dirname "${0}")" && pwd)
 . "${SOURCE_DIR}/scripts/vars.sh"
 
+mkdir -p "${TARGET_DIR}"
+mkdir -p "${CACHE_DIR}"
+
 
 "${SOURCE_DIR}/scripts/debootstrap-ubuntu-1204.sh"
 if [ ! "${?}" -eq 0 ]; then
