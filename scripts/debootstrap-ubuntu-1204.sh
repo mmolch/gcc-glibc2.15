@@ -38,8 +38,10 @@ sudo chown -R $(id -u):$(id -g) "${TARGET_ROOT_DIR}"
 
 echo "Cleaning up"
 rm "${TARGET_ROOT_DIR}/var/cache/apt/archives"/*.deb
-mkdir "${TARGET_ROOT_DIR}/gcc-glibc2.15"
-mkdir "${TARGET_DIR}/${TARGET_MACHINE}-${GCC_VERSION}-linux-glibc2.15"
-mkdir "${TARGET_ROOT_DIR}/${TARGET_MACHINE}-${GCC_VERSION}-linux-glibc2.15"
+
+echo "Setting up directories"
+mkdir -p "${TARGET_ROOT_DIR}/gcc-glibc2.15"
+mkdir -p "${TARGET_DIR}/${TARGET_MACHINE}-${GCC_VERSION}-linux-glibc2.15"
+mkdir -p "${TARGET_ROOT_DIR}/${TARGET_MACHINE}-${GCC_VERSION}-linux-glibc2.15"
 
 echo "Debootstrap finished"
