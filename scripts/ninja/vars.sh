@@ -1,0 +1,5 @@
+__SCRIPT_DIR=${BASH_SOURCE%/*}
+
+. "${__SCRIPT_DIR}/stage1_vars.sh"
+
+export NINJA_VERSION="${NINJA_STAGE1_VERSION}"
