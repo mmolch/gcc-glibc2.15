@@ -24,7 +24,8 @@ fi
 echo "Debootstrapping for ${ARCHITECTURE} into ${TARGET_ROOT_DIR}"
 
 # binutils 2.38 fail to build without makeinfo (texinfo)
-EXTRA_PACKAGES=build-essential,texinfo
+# libcap-dev for bubblewrap
+EXTRA_PACKAGES=build-essential,texinfo,libcap-dev
 
 mkdir -p "${CACHE_DIR}/${TARGET_MACHINE}/packages" 2>/dev/null
 sudo debootstrap --cache-dir="${CACHE_DIR}/${TARGET_MACHINE}/packages" --no-check-gpg --variant=minbase --include=${EXTRA_PACKAGES} --arch=${ARCHITECTURE} precise "${TARGET_ROOT_DIR}"

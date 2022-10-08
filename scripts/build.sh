@@ -70,6 +70,8 @@ fi
 export PATH="${MAKE_STAGE1_BIN_DIR}:${PATH}"
 
 
+cp -r "${INSTALL_DIR}" "${SOURCE_DIR}/${TARGET_MACHINE}${INSTALL_DIR}-nocmake"
+
 # cmake stage 1 ================================================================
 
 bash "${SCRIPT_DIR}/cmake/stage1_build.sh"
@@ -90,3 +92,12 @@ if [ ! "${?}" -eq 0 ]; then
 fi
 
 export PATH="${NINJA_STAGE1_BIN_DIR}:${PATH}"
+
+
+# bwrap stage 1 ================================================================
+
+bash "${SCRIPT_DIR}/bwrap/stage1_build.sh"
+if [ ! "${?}" -eq 0 ]; then
+    echo "Error building bwrap stage1"
+    exit 1
+fi

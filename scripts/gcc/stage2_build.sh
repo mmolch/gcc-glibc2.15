@@ -18,7 +18,7 @@ cd "${BUILD_DIR}"
     --target=$(gcc -dumpmachine) \
     --disable-multilib \
     --enable-checking=release \
-    --enable-languages=c,c++
+    --enable-languages=c,c++,fortran
 
 if [ ! "${?}" -eq 0 ]; then
     echo "Configure failed. Abort."

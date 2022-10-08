@@ -29,6 +29,7 @@ export CXXFLAGS="-Os"
 export INSTALL_DIR="/${TARGET_MACHINE}-${GCC_VERSION}-linux-glibc2.15"
 
 . "${SOURCE_DIR}/scripts/binutils/vars.sh"
+. "${SOURCE_DIR}/scripts/bwrap/vars.sh"
 . "${SOURCE_DIR}/scripts/cmake/vars.sh"
 . "${SOURCE_DIR}/scripts/gcc/vars.sh"
 . "${SOURCE_DIR}/scripts/make/vars.sh"
