@@ -1,0 +1,21 @@
+#!/bin/bash
+
+ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE}")/.." && pwd)
+TOOL=$(basename "${0}")
+
+"${ROOT_DIR}/bin.bwrap/bwrap.$(arch)" \
+    --unshare-all \
+    --uid 0 \
+    --gid 0 \
+    --ro-bind "${ROOT_DIR}/glibc-2.15/etc" /etc \
+    --ro-bind "${ROOT_DIR}/glibc-2.15/usr" /usr \
+    --ro-bind "${ROOT_DIR}/glibc-2.15/usr/bin" /bin \
+    --ro-bind "${ROOT_DIR}/glibc-2.15/usr/lib" /lib \
+    --ro-bind "${ROOT_DIR}/i686-12.2.0-linux-glibc2.15" /i686-12.2.0-linux-glibc2.15 \
+    --dev /dev \
+    --proc /proc \
+    --tmpfs /tmp \
+    --bind-try /home /home \
+    --clearenv \
+    --setenv PATH /i686-12.2.0-linux-glibc2.15/bin:/bin \
+    -- "${TOOL}" "${@}"

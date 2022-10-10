@@ -10,11 +10,10 @@ if [ -e "/gcc-glibc2.15" ]; then
     export TARGET_MACHINE=$(gcc -dumpmachine | cut -d '-' -f 1)
 else
     export SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE}")/.." && pwd)"
-    export TARGET_DIR="${SOURCE_DIR}/${TARGET_MACHINE}"
-    export TARGET_ROOT_DIR="${TARGET_DIR}/root"
 fi
 
-
+export TARGET_DIR="${SOURCE_DIR}/${TARGET_MACHINE}"
+export TARGET_ROOT_DIR="${TARGET_DIR}/root"
 export SCRIPT_DIR="${SOURCE_DIR}/scripts"
 export CACHE_DIR="${SOURCE_DIR}/cache"
 export CACHE_INSTALL_DIR="${CACHE_DIR}/${TARGET_MACHINE}"

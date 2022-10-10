@@ -40,3 +40,13 @@ fi
 
 #"${SOURCE_DIR}/scripts/run-in-bwrap.sh" "/gcc-glibc2.15/scripts/build.sh"
 "${SOURCE_DIR}/scripts/run-in-chroot.sh" "/gcc-glibc2.15/scripts/build.sh"
+
+# create glibc-2.15 environment
+
+bash "${SCRIPT_DIR}/runtime/build.sh"
+if [ ! "${?}" -eq 0 ]; then
+    echo "Error glibc-2.15 environment"
+
+    bash
+    exit 1
+fi
