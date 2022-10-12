@@ -7,8 +7,7 @@ This project is about providing a portable toolchain for CMake-based self-contai
 
 
 ## What is this good for?
-I haven't found a suitable bloat-free Linux C++ build environment for me yet, so I created one.
-
+I wanted a compact, portable CMake/GCC toolchain which doesn't require me to install all kinds of packages in my Linux systems.
 
 Requirements:
  * Compiled libraries and executables have to be able to run on (almost) all distributions that are still in use
