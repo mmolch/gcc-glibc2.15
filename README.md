@@ -9,7 +9,7 @@ This project is about providing a portable toolchain for CMake-based self-contai
 ## What is this good for?
 I wanted a compact, portable CMake/GCC toolchain which doesn't require me to install all kinds of packages in my Linux systems.
 
-Requirements:
+My requirements:
  * Compiled libraries and executables have to be able to run on (almost) all distributions that are still in use
  * I have to be able to use dlopen to use the system libraries (so no static linking possible)
  * It should integrate well with my CMake / Visual Studio Code workflow (its CMake support is amazing nowadays)
