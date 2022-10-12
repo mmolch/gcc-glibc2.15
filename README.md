@@ -49,12 +49,3 @@ Actually it isn't. Basically it comes down to run
     Copyright (C) 2022 Free Software Foundation, Inc.
     This is free software; see the source for copying conditions.  There is NO
     warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-If your system's gcc version is 12.2.0 or lower, you can also use the following script to use the programs for "native" compiling.
-
-    #!/bin/bash
-    # setenv-native.sh # example for x86_64
-    __SCRIPT_DIR__=$(cd "$(dirname "${BASH_SOURCE}")" && pwd)
-    
-    export LD_LIBRARY_PATH=${__SCRIPT_DIR__}/x86_64-12.2.0-linux-glibc2.15/lib64:${LD_LIBRARY_PATH}
-    export PATH=${__SCRIPT_DIR__}/x86_64-12.2.0-linux-glibc2.15/bin:${PATH}
